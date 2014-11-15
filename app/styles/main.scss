@@ -1,0 +1,180 @@
+@import "core/base";
+@import "core/layout";
+@import "core/skeleton";
+
+
+$w : 60%;
+
+$c-b : #bababa;
+$c-brand : rgb(245, 249, 55);
+
+$c-l : rgb(121, 161, 220);
+$c-h : rgb(162, 200, 232);
+
+$c-valid : #3ec93b;;
+$c-invalid : #c92f2f;;
+
+
+/* Theme override
+-------------------------------------------------- */
+
+html, body {
+	background: #333;
+	color: #ccc;
+	}
+
+h1,
+h2,
+h3,
+h4,
+strong {
+	color: #eee;
+	}
+
+/* /Theme override */
+
+
+/* Core
+-------------------------------------------------- */
+
+.sh-s {
+	box-shadow: 0 1px 1px 1px rgba(0, 0, 0, .6);
+	}
+
+.sh-m {
+	box-shadow: 0 1px 3px 1px rgba(0, 0, 0, .8);
+	}
+
+.rad-s {
+	border-radius: 4px;
+	}
+
+.rad-m {
+	border-radius: 8px;
+	}
+
+.border {
+	border: 1px solid $c-b;
+	}
+
+.image {
+	font-size: 0;
+	line-height: 0;
+	}
+
+.link {
+	color: $c-l;
+	&:hover { color: $c-h; }
+	}
+
+a {
+	@extend .link;
+
+	&:link,
+	&:visited {
+		@extend .link;
+		}
+	}
+
+.button[disabled] {
+	opacity: .6;
+	pointer-events: none;
+	cursor: default;
+	}
+
+/* /Core */
+
+
+/* Angular-specific
+-------------------------------------------------- */
+
+textarea,
+select,
+input {
+	&.ng-dirty {
+		&.ng-valid-required {
+			border-color: $c-valid;
+			}
+
+		&.ng-invalid {
+			border-color: $c-invalid;
+			}
+		}
+	}
+
+/* /Angular-specific */
+
+
+/* Partials
+-------------------------------------------------- */
+
+.pseudo {
+	@extend .link;
+	text-decoration: none;
+	border-bottom: 1px dashed;
+	cursor: pointer;
+
+	&.active {
+		border-color: transparent;
+		cursor: default;
+		}
+	}
+
+/* /Partials */
+
+
+/* Layout
+-------------------------------------------------- */
+
+.container {
+	padding: 20px 0;
+
+	&.root {
+		padding-top: 60px;
+		}
+	}
+
+header {
+	border-bottom: 2px solid $c-b;
+	margin-bottom: 40px;
+	}
+
+menu {
+	display: flex;
+	margin: 20px 0;
+	font-size: 16px;
+
+	li {
+		margin: 0 20px;
+		list-style: none;
+
+		&:first-child {
+			margin-left: 0;
+			}
+		}
+	}
+
+/* /Layout */
+
+
+/* Event
+-------------------------------------------------- */
+
+.event {
+	@extend .border;
+	@extend .clearfix;
+	@extend .rad-m;
+
+	padding: 20px;
+
+	.image {
+		@extend .sh-s;
+		@extend .rad-s;
+
+		float: left;
+		margin-right: 20px;
+		overflow: hidden;
+		}
+	}
+
+/* /Event */
