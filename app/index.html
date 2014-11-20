@@ -34,12 +34,33 @@
 
         <ul class="event-list">
             <li class="event" ng-controller="eventCtrl">
-                <div class="image">
-                    <img ng-src="{{event.imageUrl}}" alt=""/>
+
+                <div class="flex add-bottom">
+                    <div class="image flex_i">
+                        <img ng-src="{{event.imageUrl}}" alt=""/>
+                    </div>
+                    <div class="flex_i">
+                        <h3>{{event.name}}</h3>
+                        <div><strong>Date: </strong>{{event.date}}</div>
+                        <div><strong>Time: </strong>{{event.time}}</div>
+                    </div>
                 </div>
-                <h3>{{event.name}}</h3>
-                <div><strong>Date: </strong>{{event.date}}</div>
-                <div><strong>Time: </strong>{{event.time}}</div>
+
+                <div class="session-list">
+                    <h4>Sessions</h4>
+                    <div class="session flex" ng-repeat="session in event.sessions">
+                        <div class="flex_i">
+                            <strong>{{session.name}}</strong>
+                            <p>{{session.events}} (<small>{{session.duration}}</small>)</p>
+                        </div>
+                        <div class="flex_i">
+                            <button class="button" ng-click="voteUp(session)">Yes!</button>
+                            <button class="button" ng-click="voteDown(session)">No!</button>
+                            <p>total votes: {{session.votes}}</p>
+                        </div>
+                    </div>
+                </div>
+
             </li>
         </ul>
 

@@ -11,9 +11,11 @@ $c-brand : rgb(245, 249, 55);
 $c-l : rgb(121, 161, 220);
 $c-h : rgb(162, 200, 232);
 
-$c-valid : #3ec93b;;
-$c-invalid : #c92f2f;;
+$c-valid : #3ec93b;
+$c-invalid : #c92f2f;
 
+$bg-main : #333;
+$bg-aux : #666;
 
 /* Theme override
 -------------------------------------------------- */
@@ -154,6 +156,29 @@ menu {
 		}
 	}
 
+/* Flexbox
+-------------------------------------------------- */
+
+.flex {
+	display: flex;
+	}
+
+	.flex_i,
+	.flex > div,
+	ul.flex > li {
+		flex: 1 1 auto;
+
+		& + & {
+			margin-left: 20px;
+			}
+
+		&.image {
+			flex-grow: 0;
+			}
+		}
+
+/* /Flexbox */
+
 /* /Layout */
 
 
@@ -161,20 +186,48 @@ menu {
 -------------------------------------------------- */
 
 .event {
-	@extend .border;
-	@extend .clearfix;
-	@extend .rad-m;
-
-	padding: 20px;
 
 	.image {
 		@extend .sh-s;
 		@extend .rad-s;
 
-		float: left;
 		margin-right: 20px;
 		overflow: hidden;
 		}
 	}
 
 /* /Event */
+
+
+/* Session
+-------------------------------------------------- */
+
+.session {
+	@extend .border;
+	@extend .clearfix;
+	@extend .rad-m;
+
+	padding: 20px;
+	background: $bg-aux;
+	width: $w;
+
+	.flex_i:last-child {
+		text-align: right;
+		}
+
+	p,
+	.button {
+		margin-bottom: 10px;
+
+		&:last-child {
+			margin: 0;
+			}
+		}
+
+	& + & {
+		margin-top: 20px;
+		}
+
+	}
+
+/* /Session */
