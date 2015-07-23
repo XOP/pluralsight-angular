@@ -5,6 +5,7 @@
     <title>Event Reg App</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
     <!-- endbower -->
@@ -15,31 +16,32 @@
 </head>
 <body>
 
-<div class="root container" ng-cloak>
-    <header>
-        <div class="row">
+<div class="root container-fluid" ng-cloak>
 
-            <h1 ng-controller="appName as app">{{app.name}}</h1>
+    <div class="page-header">
+        <h1 ng-controller="appName as app">{{app.name}}</h1>
+    </div>
 
-            <menu type="context toolbar">
-                <li><a href="/" title="">home</a></li>
-                <li><a href="/events" title="">events</a></li>
-            </menu>
-        </div>
-    </header>
+    <ul class="nav nav-pills nav-justified">
+        <li role="presentation" class="active"><a href="/">Home</a></li>
+        <li role="presentation"><a href="/events">Events</a></li>
+    </ul>
+
+
 
     <div>
 
         <h2>Events</h2>
 
-        <ul class="event-list">
+        <ul class="list-unstyled event-list">
+
             <li class="event" ng-controller="eventCtrl">
 
-                <div class="flex">
-                    <div class="image flex_i">
-                        <img ng-src="{{event.imageUrl}}" alt=""/>
+                <div class="row">
+                    <div class="col-md-4">
+                        <img class="img-thumbnail" ng-src="{{event.imageUrl}}" alt=""/>
                     </div>
-                    <div class="flex_i">
+                    <div class="col-md-8">
                         <h3>{{event.name}}</h3>
 
                         <!-- alternative ways -->
@@ -53,18 +55,21 @@
                     </div>
                 </div>
 
-                <div class="session-list">
-                    <h4>Sessions</h4>
-                    <div class="session flex" ng-repeat="session in event.sessions">
-                        <div class="flex_i">
-                            <strong>{{session.name | uppercase}}</strong>
-                            <p>{{session.events}} (<small>{{session.duration}}</small>)</p>
-                        </div>
-                        <div class="flex_i">
-                            <button ng-class="{button: true, __special: session.special}" ng-click="voteUp(session)">Yes!</button>
 
-                            <button class="button" ng-click="voteDown(session)">No!</button>
-                            <p ng-style="votesStyle">total votes: {{session.votes}}</p>
+                <div class="session-list">
+                    <h3>Sessions</h3>
+                    <div class="session well" ng-repeat="session in event.sessions">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <strong>{{session.name | uppercase}}</strong>
+                                <p>{{session.events}} (<small>{{session.duration}}</small>)</p>
+                            </div>
+                            <div class="col-md-8">
+                                <button ng-class="{button: true, __special: session.special}" ng-click="voteUp(session)">Yes!</button>
+
+                                <button class="button" ng-click="voteDown(session)">No!</button>
+                                <p ng-style="votesStyle">total votes: {{session.votes}}</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -76,12 +81,14 @@
 
     <footer ng-controller="footerData">
         <div class="row">
-
-            <div class="flex">
-                <div class="flex_i"><span ng-bind-html="copyright" ng-hide="trustedAvailable"></span></div>
-                <div class="flex_i tx-r"><span ng-bind-html="copyrightTrusted"></span></div>
+            <div class="col-md-6">
+                <span ng-bind-html="copyright" ng-hide="trustedAvailable"></span>
             </div>
-
+            <div class="col-md-6">
+                <div class="text-right">
+                    <span ng-bind-html="copyrightTrusted"></span>
+                </div>
+            </div>
         </div>
     </footer>
 </div>
@@ -89,19 +96,21 @@
 <!-- build:js(.) scripts/vendor.js -->
 <!-- bower:js -->
 <script src="bower_components/jquery/dist/jquery.js"></script>
-<script src="bower_components/es5-shim/es5-shim.js"></script>
 <script src="bower_components/angular/angular.js"></script>
-<script src="bower_components/json3/lib/json3.js"></script>
+<script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js"></script>
+<script src="bower_components/angular-animate/angular-animate.js"></script>
+<script src="bower_components/angular-cookies/angular-cookies.js"></script>
 <script src="bower_components/angular-resource/angular-resource.js"></script>
 <script src="bower_components/angular-route/angular-route.js"></script>
-<script src="bower_components/underscore/underscore.js"></script>
 <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-<!--endbower -->
+<script src="bower_components/angular-touch/angular-touch.js"></script>
+<!-- endbower -->
 <!-- endbuild -->
 
 <!-- build:js({.tmp,app}) scripts/scripts.js -->
 <script src="scripts/app.js"></script>
 <script src="scripts/controllers/event.js"></script>
 <!-- endbuild -->
+
 </body>
 </html>

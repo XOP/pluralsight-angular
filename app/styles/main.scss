@@ -1,7 +1,7 @@
-@import "core/base";
-@import "core/layout";
-@import "core/skeleton";
-
+$icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
+// bower:scss
+@import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
+// endbower
 
 $grid : 16px;
 
@@ -52,6 +52,10 @@ strong {
 
 .border {
 	border: 1px solid $c-b;
+	}
+
+.clearfix {
+	clear: both;
 	}
 
 .image {

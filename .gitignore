@@ -1,11 +1,5 @@
-# yeoman
-node_modules
-dist
-.tmp
-.sass-cache
-bower_components
-*.log
-
-# idea
-.idea
-*.iml
+/node_modules
+/dist
+/.tmp
+/.sass-cache
+/bower_components
